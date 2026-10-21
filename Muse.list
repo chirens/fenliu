@@ -1,0 +1,31 @@
+# NAME: Muse
+# DESC: Muse App (Meta) for Quantumult X - all Muse traffic via proxy
+# UPDATED: 2026-10-21
+# USAGE: Add as [filter_remote] with force-policy=<your proxy policy group>
+#        The "proxy" at the end of each line is a placeholder and will be
+#        overridden by force-policy. For [filter_local], replace "proxy"
+#        with your own policy group name if yours is not called "proxy".
+#
+# --- Muse core (definite) ---
+host-suffix, muse.ai, proxy
+host-suffix, metaaiusercontent.com, proxy
+host-keyword, metaai, proxy
+#
+# --- Meta account / login / API (Muse signs in with a Meta account;
+#     graph.facebook.com, accounts.meta.com etc. live under these) ---
+host-suffix, meta.com, proxy
+host-suffix, meta.ai, proxy
+host-suffix, facebook.com, proxy
+host-suffix, facebook.net, proxy
+host-suffix, fb.com, proxy
+host-suffix, fb.me, proxy
+host-suffix, fbcdn.net, proxy
+host-suffix, fbcdn.com, proxy
+host-suffix, fbsbx.com, proxy
+#
+# --- Catch-all by owner network: any direct-IP connection to Meta's
+#     own ASN (AS32934, Facebook/Meta) also goes via proxy, so a domain
+#     missed above cannot leak direct. Side effect: other Meta apps
+#     (Facebook / Instagram / WhatsApp / Meta AI) reaching Meta IPs
+#     will go via proxy too. Delete this line if you don't want that. ---
+ip-asn, 32934, proxy
